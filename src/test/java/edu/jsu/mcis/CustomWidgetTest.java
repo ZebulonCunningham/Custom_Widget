@@ -10,7 +10,8 @@ public class CustomWidgetTest {
     private CustomWidget widget;
     
     private Point getCenterOfWidget() {
-        Rectangle bounds = widget.getShape().getBounds();
+        Shape[] shapes = widget.getShapes(); 
+        Rectangle bounds = shapes[0].getBounds();
         return new Point(bounds.x + bounds.width/2, bounds.y + bounds.height/2);
     }
     
@@ -21,7 +22,7 @@ public class CustomWidgetTest {
     
 	@Test
 	public void testWidgetIsInitiallyDeselected() {
-		assertFalse(widget.isSelected());
+        assertFalse(widget.isSelected());
 	}
     
     @Test
@@ -31,6 +32,9 @@ public class CustomWidgetTest {
                                           0, center.x, center.y, 1, false);
         
         widget.mouseClicked(event);
-        assertTrue(widget.isSelected());
+        boolean[] selected = new boolean[2];
+        selected[0] = widget.octagonSelect;
+        selected[1] = widget.hexagonSelect; 
+        assertTrue(selected[0]);
     }
 }

@@ -1,12 +1,16 @@
 package edu.jsu.mcis;
 
 public class ShapeEvent {
-    private boolean selected;
+    private boolean hexagonSelect;
+    private boolean octagonSelect; 
+
     public ShapeEvent() {
-        this(false);
+        this(false, false);
     }
-    public ShapeEvent(boolean selected) {
-        this.selected = selected;
+    public ShapeEvent(boolean hexagonSelect, boolean octagonSelect) {
+        this.hexagonSelect = hexagonSelect;
+        this.octagonSelect = octagonSelect;
     }
-    public boolean isSelected() { return selected; }
+    public boolean isHexagonSelected() { return hexagonSelect; }
+    public boolean isOctagonSelected() { return octagonSelect; }
 }
